@@ -70,7 +70,7 @@ dotnet ef migrations add yourMigrationName
 dotnet ef database update
 ```
 
-_Si se tienen problemas al mirgrarl a la base de datos, ejecutar los siguientes comandos_
+_Si se tienen problemas al mirgrar a la base de datos, ejecutar los siguientes comandos_
 ```
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
