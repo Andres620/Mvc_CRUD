@@ -1,0 +1,75 @@
+@*Para saber sobre cual modelo se va a estar trabajando*@
+
+@model IEnumerable<MvcCRUD_MDC.Models.Medico>
+
+@{
+    ViewData["Title"] = "Lista de Medicos";
+}
+
+<div class="container">
+
+    @if (TempData["mensaje"] != null)
+    {   
+        <!-- Bloque de codigo para mostrar y cerrar el mansaje de TempData -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @TempData["mensaje"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Lista de Médicos</h3>
+        </div>
+
+          <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-action="Create" 
+                    asp-controller="Medicos">Agregar Nuevo Médico</a>
+        </div>
+    </div>
+
+    <div class="row">
+        @if(Model.Count() > 0)
+        {
+            <table class="table table-bordered table-stripped">
+                <thead>
+                    <tr>
+                        <!-- Aqui estamos accediendo al nombre del campo de Medico -->
+                        <!-- Si tiene un display name nos va a mostrar ese nombre -->
+                        <td>@Html.DisplayNameFor(m => m.Id)</td>
+                        <td>@Html.DisplayNameFor(m => m.Nombre)</td>
+                        <td>@Html.DisplayNameFor(m => m.Apellido)</td>
+                        <td>@Html.DisplayNameFor(m => m.FechaNacimiento)</td>
+                        <td>@Html.DisplayNameFor(m => m.Especialidad)</td>
+                        <td>@Html.DisplayNameFor(m => m.Salario)</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>@item.FechaNacimiento</td>
+                            <td>@item.Especialidad</td>
+                            <td>@item.Salario</td>
+                            <td>
+                                <a asp-controller = "Medicos" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                <a asp-controller = "Medicos" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No existen registros</p>
+        }
+    </div>
+</div>
