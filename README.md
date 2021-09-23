@@ -57,7 +57,7 @@ dotnet dev-certs https --trust
 ```
 
 
-3. _Migracion al a base de datos_
+3. _Migracion a la base de datos_
 
 * Ejecutar los siguientes comandos:
 ```
